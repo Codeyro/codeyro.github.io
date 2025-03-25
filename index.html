@@ -100,42 +100,22 @@
         /* Темная тема */
         @media (prefers-color-scheme: dark) {
             :root {
-                --bg: #111827;
+                --bg: linear-gradient(90deg, var(--primary), var(--secondary));
                 --text: #f3f4f6;
             }
 
-            .subscribe input,
-            .social-link {
-                background: rgba(30, 41, 59, 0.5);
+            h1 {
+                color: #ffffff;
             }
 
             .loader {
                 background: rgba(255,255,255,0.1);
             }
+
+            .loader-bar {
+                background: rgb(255,255,255);
+            }
         }
-
-
-
-.bg {
-  animation:slide 3s ease-in-out infinite alternate;
-  background-image: linear-gradient(-60deg, #fdfffb 50%, #f1f1f1 50%);
-  bottom:0;
-  left:-50%;
-  opacity:.5;
-  position:fixed;
-  right:-50%;
-  top:0;
-  z-index:-1;
-}
-
-.bg2 {
-  animation-direction:alternate-reverse;
-  animation-duration:4s;
-}
-
-.bg3 {
-  animation-duration:5s;
-}
     </style>
 </head>
 <body>
