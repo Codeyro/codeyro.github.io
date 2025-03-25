@@ -3,59 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 • Codeyro technologies</title>
+    <link rel="icon" href="/static/favicon.svg" type="image/x-icon">
+    <title>Codeyro technologies</title>
     <style>
+        :root {
+            --primary: #23244a; /* Индиго */
+            --secondary: #234c77; /* Янтарный */
+            --bg: #fbfbfd;
+            --text: #1f2937;
+        }
+
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #ffffff;
-            color: #424242;
+            font-family: 'Geist', 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            text-align: center;
+            overflow-x: hidden;
         }
 
         .container {
-            max-width: 750px;
-            padding: 50px;
+            max-width: 480px;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+            text-align: center;
         }
 
         h1 {
-            font-size: 8rem;
-            margin: 0;
-            color: #23244a;
-            font-weight: 700;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0 0 1rem;
+            line-height: 1.2;
+            padding: 3px 0;
         }
 
-        p {
-            font-size: 1.5rem;
-            margin: 30px 0;
+        p.subtitle {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin: 0 auto 2rem;
+            max-width: 50ch;
         }
 
-                .animation {
-            margin-top: 40px;
-            font-size: 4rem;
-            animation: float 3s ease-in-out infinite;
+        .loader-container {
+            margin: 3rem 0;
         }
 
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
+        .loader {
+            width: 120px;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loader-bar {
+            position: absolute;
+            height: 100%;
+            width: 40%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+            animation: slide 2.5s ease-in-out infinite;
+        }
+
+        @keyframes slide {
+            0% {
+                left: -40%;
+                width: 40%;
             }
             50% {
-                transform: translateY(-20px);
+                width: 80%;
+            }
+            100% {
+                left: 100%;
+                width: 40%;
             }
         }
+
+        .progress-info {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            font-style: italic;
+        }
+
+        /* Темная тема */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #111827;
+                --text: #f3f4f6;
+            }
+
+            .subscribe input,
+            .social-link {
+                background: rgba(30, 41, 59, 0.5);
+            }
+
+            .loader {
+                background: rgba(255,255,255,0.1);
+            }
+        }
+
+
+
+.bg {
+  animation:slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #fdfffb 50%, #f1f1f1 50%);
+  bottom:0;
+  left:-50%;
+  opacity:.5;
+  position:fixed;
+  right:-50%;
+  top:0;
+  z-index:-1;
+}
+
+.bg2 {
+  animation-direction:alternate-reverse;
+  animation-duration:4s;
+}
+
+.bg3 {
+  animation-duration:5s;
+}
     </style>
 </head>
 <body>
-<div class="container">
-    <h1>404</h1>
-    <p>Упс! Здесь должен быть веб-сайт Codeyro technologies, но, похоже, он всё ещё находится в разработке...</p>
-    <div class="animation">🛠️</div>
-</div>
+    <div class="bg"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
+    <div class="container">
+        <h1>Codeyro technologies</h1>
+        <p class="subtitle">Здесь должен быть наш веб-сайт, но, похоже, он всё ещё находится в разработке...</p>
+
+        <div class="loader-container">
+            <div class="loader">
+                <div class="loader-bar"></div>
+            </div>
+            <div class="progress-info">Работа в процессе...</div>
+        </div>
+    </div>
+
+    <script>
+        // Смена статусных сообщений
+        const messages = [
+            "Проектирование интерфейса...",
+            "Разработка функционала...",
+            "Создание баз данных...",
+            "Загрузка иконок...",
+            "Обработка изображений...",
+            "Создание скриптов...",
+            "Тестирование системы..."
+        ];
+        const progressInfo = document.querySelector('.progress-info');
+        let currentMessage = 0;
+
+        function changeMessage() {
+            progressInfo.style.opacity = 0;
+            setTimeout(() => {
+                currentMessage = (currentMessage + 1) % messages.length;
+                progressInfo.textContent = messages[currentMessage];
+                progressInfo.style.opacity = 1;
+            }, 500);
+        }
+
+        // Меняем сообщения каждые 3 секунды
+        setInterval(changeMessage, 6000);
+    </script>
 </body>
 </html>
