@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="yandex-verification" content="da8ec76d5278af17" />
     <link rel="icon" href="/static/favicon.svg" type="image/x-icon">
     <title>Codeyro technologies</title>
     <style>
@@ -90,13 +91,6 @@
             }
         }
 
-        .progress-info {
-            margin-top: 1.5rem;
-            font-size: 0.9rem;
-            opacity: 0.7;
-            font-style: italic;
-        }
-
         /* Темная тема */
         @media (prefers-color-scheme: dark) {
             :root {
@@ -130,35 +124,7 @@
             <div class="loader">
                 <div class="loader-bar"></div>
             </div>
-            <div class="progress-info">Работа в процессе...</div>
         </div>
     </div>
-
-    <script>
-        // Смена статусных сообщений
-        const messages = [
-            "Проектирование интерфейса...",
-            "Разработка функционала...",
-            "Создание баз данных...",
-            "Загрузка иконок...",
-            "Обработка изображений...",
-            "Создание скриптов...",
-            "Тестирование системы..."
-        ];
-        const progressInfo = document.querySelector('.progress-info');
-        let currentMessage = 0;
-
-        function changeMessage() {
-            progressInfo.style.opacity = 0;
-            setTimeout(() => {
-                currentMessage = (currentMessage + 1) % messages.length;
-                progressInfo.textContent = messages[currentMessage];
-                progressInfo.style.opacity = 1;
-            }, 500);
-        }
-
-        // Меняем сообщения каждые 3 секунды
-        setInterval(changeMessage, 6000);
-    </script>
 </body>
 </html>
