@@ -1,0 +1,9 @@
+{
+  "version": "1.2",
+  "api_version": 3,
+  "layout": {
+    "logo": "/static/tableau_icon.png",
+    "color": "#23244a",
+    "show_title": "all"
+  }
+}
